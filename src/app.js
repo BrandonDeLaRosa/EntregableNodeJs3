@@ -5,28 +5,29 @@ const ToDosRouter = require('./routes/toDo.routes');
 const CategoriesRouter = require ('./routes/categories.routes')
 
 const app = express();
+app.use(express.json())
 
-const PORT = 8000;
-
-app.use(UserRoutes);
-app.use(ToDosRouter);
-app.use(CategoriesRouter);
 
 db.authenticate()
-    .then(() => {
+.then(() => {
         console.log('authentication successful');
 });
 
-// db.sync()
-db.sync({ force: true})  
+db.sync()
+// db.sync({ force: true})  
 // db.sync({ alter: true})  
 
  .then(() => {
    console.log('Base de datos sincronizada. :)');
- })
+})
   .catch((error) =>{
-    console.log(error);
-});
+      console.log(error);
+    });
+    
+    const PORT = 8000;
+    app.use(UserRoutes);
+    app.use(ToDosRouter);
+    app.use(CategoriesRouter);
 
 
 app.get('/', (req,res) => {

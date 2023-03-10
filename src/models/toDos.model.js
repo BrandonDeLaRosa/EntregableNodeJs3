@@ -17,6 +17,10 @@ const ToDos = db.define('toDos',{
          type: DataTypes.TEXT,
          allowNull:false
      },
+     status: {
+        type: DataTypes.STRING(30),
+        allowNull:false
+     },
      userId:{
         type: DataTypes.INTEGER,
         allowNull:false,
