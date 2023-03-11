@@ -7,7 +7,19 @@ const Categories = require('../models/categories.model');
 class ToDosServices {
     static async getAllToDos(){
        try {
-        const getAll = await ToDos.findAll({ include: Categories});
+        const getAll = await ToDos.findAll({ 
+            attributes: { exclude: ["createdAt", "updatedAt", "user_id", "category_id","userId", "categoryId"]},
+            include: [
+                {
+                    model: Categories, 
+                    attributes: ["name"]
+                },
+                {
+                    model: Users,
+                    attributes: ["username"]
+                }
+            ]
+        });
         return getAll
        } catch (error) {
         throw(error)
