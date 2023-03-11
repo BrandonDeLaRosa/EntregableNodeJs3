@@ -2,7 +2,11 @@ const express = require('express');
 const db = require('./utils/database');
 const UserRoutes = require('./routes/users.routes');
 const ToDosRouter = require('./routes/toDo.routes');
-const CategoriesRouter = require ('./routes/categories.routes')
+const CategoriesRouter = require ('./routes/categories.routes');
+const initModels = require ('./models/initModels')
+
+
+initModels();
 
 const app = express();
 app.use(express.json())

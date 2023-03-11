@@ -1,9 +1,13 @@
+
 const ToDos = require('../models/toDos.model');
+const categories = require ('../models/categories.model');
+const Users = require('../models/users.model');
+const Categories = require('../models/categories.model');
 
 class ToDosServices {
     static async getAllToDos(){
        try {
-        const getAll = await ToDos.findAll();
+        const getAll = await ToDos.findAll({ include: Categories});
         return getAll
        } catch (error) {
         throw(error)
@@ -44,3 +48,23 @@ class ToDosServices {
 }
 
 module.exports = ToDosServices;
+
+
+/*
+ {
+                    model: categories,
+                    attributes: ["name"]
+                }
+
+
+
+                {
+            include: [
+               {
+                model:ToDos, include:[{
+                    model:categories, attributes:["name"]
+                }]
+               }
+            ],
+        }
+*/

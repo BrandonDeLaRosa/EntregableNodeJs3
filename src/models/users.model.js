@@ -8,6 +8,14 @@ const Users = db.define('users', {
         autoIncrement: true,
         allowNull: false
      },
+     name:{
+        type: DataTypes.STRING(30),
+        defaultValue:"john"
+     },
+     lastname:{
+        type: DataTypes.STRING(30),
+        defaultValue:"doe"
+     },
      username: {
          type: DataTypes.STRING(30),
          unique:true,

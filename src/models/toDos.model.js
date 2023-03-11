@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 const db = require('../utils/database')
 
 
-const ToDos = db.define('toDos',{
+const ToDos = db.define('todos',{
     id: {
         type: DataTypes.INTEGER,
         primaryKey:true,
@@ -19,6 +19,7 @@ const ToDos = db.define('toDos',{
      },
      status: {
         type: DataTypes.STRING(30),
+        defaultValue: "pending",
         allowNull:false
      },
      userId:{
@@ -26,7 +27,7 @@ const ToDos = db.define('toDos',{
         allowNull:false,
         field:"user_id"
     },
-    categoryId:{
+    categoryId:{ 
         type: DataTypes.INTEGER,
         allowNull:false,
         field:"category_id"
